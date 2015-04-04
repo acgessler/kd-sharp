@@ -10,7 +10,7 @@ namespace KDTree
     /// A NearestNeighbour iterator for the KD-tree which intelligently iterates and captures relevant data in the search space.
     /// </summary>
     /// <typeparam name="T">The type of data the iterator should handle.</typeparam>
-    public class NearestNeighbour<T> : IEnumerator
+    public class NearestNeighbour<T> : IEnumerator, IEnumerable
     {
         /// <summary>The point from which are searching in n-dimensional space.</summary>
         private double[] tSearchPoint;
@@ -224,6 +224,11 @@ namespace KDTree
         public T Current
         {
             get { return _Current; }
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return this;
         }
     }
 }
